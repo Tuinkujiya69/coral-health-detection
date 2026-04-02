@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReefScan AI — Coral Health Detection</title>
+    <meta name="description" content="AI-powered coral reef health assessment with real-time confidence scoring.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Underwater Background -->
+    <div class="underwater-bg"></div>
+    <div class="underwater-overlay"></div>
+
+    <!-- Bubbles -->
+    <div class="bubbles-container" id="bubblesContainer"></div>
+
+    <!-- Caustic Light -->
+    <div class="caustic-overlay"></div>
+    <div class="light-rays"></div>
+
+    <!-- Main Content -->
+    <div class="app-container">
+        <header class="vessel-header">
+            <div class="logo">REEFSCAN <span class="version">v1.0.4</span></div>
+            <nav class="status-indicator">
+                <span class="pulse"></span> AI ENGINE ONLINE
+            </nav>
+        </header>
+
+        <main class="main-content fade-in">
+            <!-- Title -->
+            <div class="hero-title">
+                <h2 class="gradient-text">Coral Health Detection</h2>
+                <p class="subtitle">Upload reef imagery for AI-powered health assessment with real-time confidence scoring.</p>
+            </div>
+
+            <!-- Scanner Grid -->
+            <div class="scanner-grid">
+                <!-- Image Input -->
+                <div class="scanner-column">
+
+<span class="section-label">Image Input</span>
+
+<div class="card drop-zone" id="dropZone">
+
+<input type="file" id="fileInput" name="file" accept="image/*" hidden>
+
+<div class="upload-ui" id="uploadUI">
+
+<h3>Click to Upload Coral Image</h3>
+<p>Drop reef imagery or click to browse</p>
+
+</div>
+
+<div class="preview-ui hidden" id="previewContainer">
+
+<img id="imagePreview" src="" alt="Coral Preview">
+<div class="scan-bar"></div>
+
+<button class="clear-btn hidden" id="clearBtn">&times;</button>
+
+</div>
+
+</div>
+
+</div>
+
+                <!-- Analysis Output -->
+                <div class="scanner-column">
+                    <span class="section-label">Analysis Output</span>
+
+                    <!-- Empty State -->
+                    <div class="card empty-state" id="emptyState">
+                        <div class="empty-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/>
+                            </svg>
+                        </div>
+                        <p>Upload an image to begin analysis</p>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div class="card loading-state hidden" id="loadingState">
+                        <div class="spinner-container">
+                            <div class="spinner-ring"></div>
+                            <div class="spinner-pulse"></div>
+                        </div>
+                        <p>Analyzing reef health...</p>
+                    </div>
+
+                    <!-- Result Card -->
+                    <div class="card result-card hidden" id="resultCard">
+                        <div class="result-header">
+                            <span class="result-label-tag">Health Analysis</span>
+                            <h2 id="predictionLabel">—</h2>
+                        </div>
+                        <div class="confidence-meter">
+                            <div class="meter-track">
+                                <div class="meter-fill" id="confidenceFill"></div>
+                            </div>
+                            <div class="meter-data">
+                                <span>Confidence</span>
+                                <span class="confidence-value" id="confidenceValue">0%</span>
+                            </div>
+                        </div>
+                        <button class="btn-primary" id="resetBtn">New Analysis</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Cards -->
+            <div class="info-grid">
+                <div class="card info-card fade-up" style="animation-delay: 0.3s">
+                    <h4>Computer Vision</h4>
+                    <p>Deep learning models trained on 50K+ reef images</p>
+                </div>
+                <div class="card info-card fade-up" style="animation-delay: 0.4s">
+                    <h4>Real-time Analysis</h4>
+                    <p>Health assessment in under 3 seconds</p>
+                </div>
+                <div class="card info-card fade-up" style="animation-delay: 0.5s">
+                    <h4>High Accuracy</h4>
+                    <p>94.7% confidence on coral bleaching detection</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
